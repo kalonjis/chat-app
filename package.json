@@ -1,0 +1,33 @@
+{
+  "name": "chatcord",
+  "version": "1.0.0",
+  "description": "Realtime chat app with rooms",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalonjis/chatcord.git"
+  },
+  "keywords": [
+    "chat",
+    "socket",
+    "socket.io",
+    "mongodb"
+  ],
+  "author": "Stephane Kalonji",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kalonjis/chatcord/issues"
+  },
+  "homepage": "https://github.com/kalonjis/chatcord#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^4.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
