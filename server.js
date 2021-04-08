@@ -12,8 +12,14 @@ const io = socketio(server);
 // set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Run when client connect
+io.on('connection',socket =>{
+    console.log('New WS connection...')
+})
+
+
 const PORT = 3000 || process.env.PORT;
 
-server.listen(3000, ()=>{
+server.listen(3000, socket=>{
     console.log(`Server is running on ${PORT}`)
 });
