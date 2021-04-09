@@ -4,7 +4,7 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
-const { userJoin, getCurrentUser} = require('./utils/users');
+const { userJoin, getCurrentUser, userLeave, getRoomUsers} = require('./utils/users');
 
 // Initalize socket on server
 const app = express();
@@ -39,7 +39,8 @@ io.on('connection',socket =>{
 
     // Runs when client disconnects
     socket.on('disconnect', ()=>{
-        io.emit('message', formatMessage(botName,'A user has left the chat')); // 'io.emit' is adressed to everybody
+        const user = userLeave(socket.id);
+        io.to(user.room).emit('message', formatMessage(botName, `${user.username} has left the chat`)); // 'io.emit' is adressed to everybody
     });
 });
 
