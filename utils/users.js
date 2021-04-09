@@ -1,4 +1,4 @@
-const users = [];
+const users = []; // use to store the state...should be in a database
 
 // Join user to chat
 const userJoin = (id, username, room)=>{
