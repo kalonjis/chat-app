@@ -1,6 +1,12 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages')
 
+//Get username and room from url
+const { username, room } = Qs.parse(location.search, {
+    ignoreQueryPrefix: true
+});
+console.log(username, room)
+
 const socket = io(); // we can use it as we import socket.io in the script (chat.html-line 60)
 
 // Message from server
