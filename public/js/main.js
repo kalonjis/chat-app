@@ -5,9 +5,11 @@ const chatMessages = document.querySelector('.chat-messages')
 const { username, room } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 });
-console.log(username, room)
 
 const socket = io(); // we can use it as we import socket.io in the script (chat.html-line 60)
+
+// Join chatroom
+socket.emit('joinRoom', { username, room});
 
 // Message from server
 socket.on('message',message=>{
