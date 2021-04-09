@@ -40,7 +40,9 @@ io.on('connection',socket =>{
     // Runs when client disconnects
     socket.on('disconnect', ()=>{
         const user = userLeave(socket.id);
-        io.to(user.room).emit('message', formatMessage(botName, `${user.username} has left the chat`)); // 'io.emit' is adressed to everybody
+        if(user){
+            io.to(user.room).emit('message', formatMessage(botName, `${user.username} has left the chat`)); // 'io.emit' is adressed to everybody
+        }
     });
 });
 
