@@ -1,4 +1,5 @@
 const chatForm = document.getElementById('chat-form');
+const chatMessages = document.querySelector('.chat-messages')
 
 const socket = io(); // we can use it as we import socket.io in the script (chat.html-line 60)
 
@@ -6,6 +7,9 @@ const socket = io(); // we can use it as we import socket.io in the script (chat
 socket.on('message',message=>{
     console.log(message);
     outputMessage(message);
+
+    // Scroll down
+    chatMessages.scrollTop = chatMessages.scrollHeight // display the last message by default (scroll on bottom)
 
 });
 
