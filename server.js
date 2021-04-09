@@ -14,9 +14,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Run when client connect
 io.on('connection',socket =>{
-    console.log('New WS connection...')
+    // Welcome curent user
+    socket.emit('message', 'welcome to chatcord'); // 'socket.emit' is adressed to the current client ONLY
 
-    socket.emit('message', 'welcome to chatcord')
+    // Broadcast when a user connects
+    socket.broadcast.emit('message', 'A user has joined the chat'); // 'socket.broadcast.emit' is adressed to all except the current client
+
+    // Runs when client disconnects
+    socket.on('disconnect', ()=>{
+        io.emit('message', 'A user has left the chat'); // 'io.emit' is adressed to everybody
+    })
 })
 
 
