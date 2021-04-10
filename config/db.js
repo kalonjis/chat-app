@@ -3,8 +3,8 @@
 //On instancie le module 'mongoose' (npm i -s mongoose )
 const mongoose = require('mongoose');
 
-mongoose.connect(
-    // On récupère le cluster créer dans mongo Atlas depuis mongo Compass 
+mongoose.connect( 
+    // Cluster create with Mongo DB Atlas
     'mongodb+srv://' + process.env.DB_USER_PASS + '@cluster0.dipxw.mongodb.net/Chat-Cord?retryWrites=true&w=majority', 
     
     {
