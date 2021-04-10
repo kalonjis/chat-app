@@ -6,6 +6,12 @@ const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
 const { userJoin, getCurrentUser, userLeave, getRoomUsers} = require('./utils/users');
 
+// import environment variables 
+require('dotenv').config({path: './config/.env'}) // npm i -s dotenv
+
+// db connection
+require('./config/db')
+
 // Initalize socket on server
 const app = express();
 const server = http.createServer(app)
@@ -76,8 +82,8 @@ io.on('connection',socket =>{
 });
 
 
-const PORT = 3000 || process.env.PORT;
+const PORT = process.env.PORT;
 
-server.listen(3000, socket=>{
+server.listen(PORT, socket=>{
     console.log(`Server is running on ${PORT}`)
 });
